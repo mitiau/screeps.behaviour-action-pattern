@@ -11,19 +11,23 @@ setup.maxCount = function(room){
         if( distance > maxRange ) 
             return;
         flag = Game.flags[flagEntry.name];
-        if( !flag.targetOf || flag.targetOf.length == 0 )
-            max++;
-    }
+    //    if( !flag.targetOf || flag.targetOf.length == 0 )
+    //        {
+                max++;
+                console.log('Ranger needed for flag ' + flag + ' current need ' + max);}
+//    }
     let flagEntries = FlagDir.filter(FLAG_COLOR.defense);
+    console.log('Found defence flags ' + flagEntries);
     flagEntries.forEach(calcMax);
+    console.log('Max rangers ' + max);
     return max;
 };
 setup.small = {
-    fixedBody: [RANGED_ATTACK,MOVE,RANGED_ATTACK,MOVE,HEAL,MOVE], 
-    multiBody: [RANGED_ATTACK, MOVE], 
-    minAbsEnergyAvailable: 1200, 
+    fixedBody: [RANGED_ATTACK,MOVE,RANGED_ATTACK,MOVE,HEAL,MOVE],
+    multiBody: [RANGED_ATTACK, MOVE],
+    minAbsEnergyAvailable: 900,
     minEnergyAvailable: 0.5,
-    maxMulti: 6,
+    maxMulti: 1,
     maxCount: setup.maxCount,
     maxWeight: null
 };

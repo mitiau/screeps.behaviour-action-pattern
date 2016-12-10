@@ -32,6 +32,7 @@ module.exports = {
                 let deposit = [];
                 if( creep.carry.energy == carrySum ) deposit = creep.room.structures.links.privateers;
                 if( creep.room.storage ) deposit.push(creep.room.storage);
+                if( creep.room.structures.container.controller && creep.room.structures.container.controller.energy <1500) deposit.push(creep.room.structures.container.controller);
                 if( deposit.length > 0 ){
                     let target = creep.pos.findClosestByRange(deposit);
                     if( target.structureType == STRUCTURE_STORAGE && Creep.action.storing.assign(creep, target) ) return;
